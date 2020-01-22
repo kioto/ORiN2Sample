@@ -29,8 +29,8 @@ HKCR
 				val License = s ''
 				val Parameter = s ''
 				val CRDFile = s ''
-				val BindCmds = d '0'
-				val BindExec = d '0'
+				val BindCmds = d '4294967295'
+				val BindExec = d '4294967295'
 				val GroupID = d '1'
 			}
 			val AppID = s '{4E34304A-1727-4DC2-8DC8-57E37C2DF8B6}'

@@ -21,7 +21,6 @@
  *	@retval	HRESULT
  *
  */ 
-/*
 HRESULT CCaoProvVariable::FinalInitialize(PVOID pObj)
 {
 	HRESULT hr = E_INVALIDARG;
@@ -75,7 +74,6 @@ HRESULT CCaoProvVariable::FinalInitialize(PVOID pObj)
 
 	return hr;
 }
-*/
 
 /**	最終処理
  *
@@ -147,7 +145,6 @@ HRESULT CCaoProvVariable::FinalGetDateTime(VARIANT *pVal)
  *	@retval	HRESULT
  *
  */  
-/*
 HRESULT CCaoProvVariable::FinalGetValue(VARIANT *pVal)
 {
 	HRESULT hr = E_ACCESSDENIED;
@@ -169,7 +166,6 @@ HRESULT CCaoProvVariable::FinalGetValue(VARIANT *pVal)
 
 	return hr;
 }
-*/
 
 /**	変数の値の変更
  *
@@ -179,7 +175,6 @@ HRESULT CCaoProvVariable::FinalGetValue(VARIANT *pVal)
  *	@retval	HRESULT
  *
  */  
-/*
 HRESULT CCaoProvVariable::FinalPutValue(VARIANT newVal)
 {
 	HRESULT hr = E_ACCESSDENIED;
@@ -200,7 +195,6 @@ HRESULT CCaoProvVariable::FinalPutValue(VARIANT newVal)
 	}
 	return hr;
 }
-*/
 
 /**	IDの取得
  *
@@ -246,6 +240,8 @@ HRESULT CCaoProvVariable::FinalGetMicrosecond(long *pVal)
 // 変数名リストの実体
 var_map CCaoProvVariable::m_cs_map;
 bool CCaoProvVariable::m_bInitializedMap = false;
+BSTR CCaoProvVariable::m_status = SysAllocString(L"initialized");
+BSTR CCaoProvVariable::m_command = SysAllocString(L"");
 
 
 /**	変数名テーブルの初期化
@@ -261,6 +257,8 @@ HRESULT  CCaoProvVariable::InitMapTable()
 	const var_map_entry var_cs_map[] = { 
 		MAP_ENTRY( CS_MAKER_NAME	),
 		MAP_ENTRY( CS_VERSION	),
+		MAP_ENTRY(CS_STATUS),
+		MAP_ENTRY(CS_COMMAND),
 		// :
 
 		};
@@ -291,6 +289,14 @@ HRESULT CCaoProvVariable::FinalGetCtrlSysValue(VARIANT *pVal)
 		pVal->vt = VT_BSTR;
 		pVal->bstrVal = SysAllocString(L"0.0.0");
 		break;
+	case CS_STATUS:
+		pVal->vt = VT_BSTR;
+		pVal->bstrVal = m_status;
+		break;
+	case CS_COMMAND:
+		pVal->vt = VT_BSTR;
+		pVal->bstrVal = m_command;
+		break;
 	default:
 		hr = E_ACCESSDENIED;
 		break;
@@ -308,6 +314,28 @@ HRESULT CCaoProvVariable::FinalGetCtrlSysValue(VARIANT *pVal)
 HRESULT CCaoProvVariable::FinalPutCtrlSysValue(VARIANT newVal)
 {
 	HRESULT hr = E_ACCESSDENIED;
+
+	switch (m_lUSysId) {
+	case CS_STATUS:
+		m_status = newVal.bstrVal;
+		hr = S_OK;
+		break;
+	case CS_COMMAND:
+		m_command = newVal.bstrVal;
+		hr = S_OK;
+		if (!wcscmp(m_command, L"RUN")) {
+			m_status = SysAllocString(L"running");
+		}
+		else if (!wcscmp(m_command, L"STOP")) {
+			m_status = SysAllocString(L"standby");
+		}
+		else {
+			m_status = SysAllocString(L"error");
+		}
+		break;
+	default:
+		break;
+	}
 
 	return hr;
 }

@@ -26,14 +26,14 @@ class ATL_NO_VTABLE CCaoProvVariable :
 	public ICaoProvVariableImpl<CCaoProvVariable>
 {
 protected:
-//	HRESULT FinalInitialize(PVOID pObj);
+	HRESULT FinalInitialize(PVOID pObj);
 //	void FinalTerminate();
 
 //	HRESULT FinalGetAttribute( /*[out, retval ]*/ long *pVal );
 //	HRESULT FinalGetHelp(/*[out, retval]*/ BSTR *pVal);
 //	HRESULT FinalGetDateTime(/*[out, retval]*/ VARIANT *pVal);
-//	HRESULT FinalGetValue(/*[out, retval]*/ VARIANT *pVal);
-//	HRESULT FinalPutValue(/*[in]*/ VARIANT newVal);
+	HRESULT FinalGetValue(/*[out, retval]*/ VARIANT *pVal);
+	HRESULT FinalPutValue(/*[in]*/ VARIANT newVal);
 //	HRESULT FinalGetID(/*[out, retval]*/ VARIANT *pVal);
 //	HRESULT FinalPutID(/*[in]*/ VARIANT newVal);
 //	HRESULT FinalGetMicrosecond(/*[out, retval]*/ long *pVal);
@@ -54,6 +54,8 @@ private:
 	// 変数名リスト
 	static bool m_bInitializedMap;
 	static var_map m_cs_map;
+	static BSTR m_status;
+	static BSTR m_command;
 
 	long m_lUSysId;					// システム変数番号
 
