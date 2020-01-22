@@ -1,0 +1,56 @@
+/** @file CaoProv.idl
+ *
+ *  @brief CAOPROV.dll 用の IDL ソース ファイル
+ *
+ *　このファイルはタイプ ライブラリ (CAOPROV.tlb) を作成するために<br>
+ *　タイプ ライブラリ作成ツール MIDL によって処理されます。
+ *
+ *  @version	1.0
+ *	@date		2003/8/8
+ *	@author		DENSO WAVE
+ *
+ */
+
+#define CAOPROV_CONTROLLER 4E34304A-1727-4DC2-8DC8-57E37C2DF8B6 //  (注) この値は，.rgs ファイルの CLSID & AppID の値と一致させること！
+#define CAOPROV_EXTENSION 5F8BB8F2-3470-41DE-8451-069A5716FCC2
+#define CAOPROV_FILE BAA0A3E6-0F75-40ED-838B-22CBD8287290
+#define CAOPROV_ROBOT AB418547-31E5-46F2-9CD7-564BF8E57A60
+#define CAOPROV_TASK 0D4827CA-1164-4601-9AA4-4C19F20E359B
+#define CAOPROV_VARIABLE CB6CA723-7DF9-4066-8E97-24AEFA9D665D
+#define CAOPROV_MESSAGE 7A6BE22E-171C-4C42-B82F-C352A800F474
+#define CAOPROV_COMMAND 3BAE46E6-FAC1-4979-98FF-FC5F646F0BD3
+
+
+#if (__midl >= 501)
+midl_pragma warning(disable:1015)
+midl_pragma warning(disable:2400)
+#endif
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+/* -------------------------- */ 
+/* CAOPROV Definitions        */
+/* -------------------------- */
+#define CAOPROV_IF_ONLY
+#include "CAOPROVIF0.idl"
+#undef CAOPROV_IF_ONLY
+
+[
+	uuid(7D5C54E5-8F3D-45D0-8C02-A8E9AEB1C14C),
+	version(1.0),
+	helpstring("CAOPROV (Vdr.Smpl) 1.0 Type Library")
+]
+library CAOPROVLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+#define CAOPROV_CLS_ONLY
+#include "CAOPROVIF0.idl"
+#undef CAOPROV_CLS_ONLY
+
+// >>>>>>>>>> これ以降は必要に応じてコードを追加して下さい．<<<<<<<<<< 
+
+
+};
