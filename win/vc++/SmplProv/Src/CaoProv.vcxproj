@@ -128,6 +128,24 @@
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Unicode Release MinDependency|Win32'">SmplProv</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Unicode Release MinSize|Win32'">SmplProv</TargetName>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\ORiN2\CAO\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release MinDependency|Win32'">
+    <IncludePath>C:\ORiN2\CAO\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release MinSize|Win32'">
+    <IncludePath>C:\ORiN2\CAO\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Unicode Debug|Win32'">
+    <IncludePath>C:\ORiN2\CAO\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Unicode Release MinDependency|Win32'">
+    <IncludePath>C:\ORiN2\CAO\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Unicode Release MinSize|Win32'">
+    <IncludePath>C:\ORiN2\CAO\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release MinSize|Win32'">
     <CustomBuildStep>
       <Message>?o?^??s????????</Message>
