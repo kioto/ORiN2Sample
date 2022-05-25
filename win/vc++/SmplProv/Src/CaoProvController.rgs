@@ -1,0 +1,46 @@
+HKCR
+{
+	CaoProv.Vdr.Smpl.1 = s 'CaoProvController Class (Vdr.Smpl)'
+	{
+		CLSID = s '{4E34304A-1727-4DC2-8DC8-57E37C2DF8B6}'
+	}
+	CaoProv.Vdr.Smpl = s 'CaoProvController Class (Vdr.Smpl)'
+	{
+		CLSID = s '{4E34304A-1727-4DC2-8DC8-57E37C2DF8B6}'
+		CurVer = s 'CaoProv.Vdr.Smpl.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {4E34304A-1727-4DC2-8DC8-57E37C2DF8B6} = s 'CaoProvController Class (Vdr.Smpl)'
+		{
+			ProgID = s 'CaoProv.Vdr.Smpl.1'
+			VersionIndependentProgID = s 'CaoProv.Vdr.Smpl'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Free'
+			}
+			'TypeLib' = s '{7D5C54E5-8F3D-45D0-8C02-A8E9AEB1C14C}'
+			'CAO Provider' = s 'Vdr Smpl CAO Provider'
+			{
+				val Enabled = d '4294967295'
+				val RunAsLocal = d '0'
+				val Writable = d '4294967295'
+				val LocaleID = d '0'
+				val License = s ''
+				val Parameter = s ''
+				val CRDFile = s ''
+				val BindCmds = d '4294967295'
+				val BindExec = d '4294967295'
+				val GroupID = d '1'
+			}
+			val AppID = s '{4E34304A-1727-4DC2-8DC8-57E37C2DF8B6}'
+		}
+	}
+	NoRemove AppID
+	{
+		ForceRemove {4E34304A-1727-4DC2-8DC8-57E37C2DF8B6} = s 'CaoProvController Class (Vdr.Smpl)'
+		{
+			val DllSurrogate = s ''
+		}
+	}
+}
